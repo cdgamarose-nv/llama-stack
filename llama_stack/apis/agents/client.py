@@ -7,6 +7,7 @@
 import asyncio
 import json
 import os
+import traceback
 from typing import AsyncGenerator, Optional
 
 import fire
@@ -154,6 +155,7 @@ async def run_llama_3_1(host: str, port: int, model: str = "Llama3.1-8B-Instruct
         WolframAlphaToolDefinition(api_key=os.getenv("WOLFRAM_ALPHA_API_KEY")),
         CodeInterpreterToolDefinition(),
     ]
+
     tool_definitions += [
         FunctionCallToolDefinition(
             function_name="get_boiling_point",

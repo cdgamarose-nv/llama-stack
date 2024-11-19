@@ -76,6 +76,7 @@ def create_api_client_class(protocol) -> Type:
                 response.raise_for_status()
 
                 j = response.json()
+
                 if j is None:
                     return None
                 # print(f"({protocol.__name__}) Returning {j}, type {return_type}")

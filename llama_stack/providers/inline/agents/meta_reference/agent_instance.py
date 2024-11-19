@@ -12,6 +12,7 @@ import secrets
 import shutil
 import string
 import tempfile
+import traceback
 import uuid
 from datetime import datetime
 from typing import AsyncGenerator, List, Tuple
@@ -758,6 +759,12 @@ class ChatAgent(ShieldRunnerMixin):
         for t in self.agent_config.tools:
             if isinstance(t, SearchToolDefinition):
                 ret.append(ToolDefinition(tool_name=BuiltinTool.brave_search))
+                # if t.engine == SearchEngineType.brave:
+                #     ret.append(ToolDefinition(tool_name=BuiltinTool.brave_search))
+                # elif t.engine == SearchEngineType.tavily:
+                #     ret.append(ToolDefinition(tool_name=BuiltinTool.tavily_search))
+                # else:
+                #     raise ValueError (f"Unsupported SearchToolDefinition {t}")
             elif isinstance(t, WolframAlphaToolDefinition):
                 ret.append(ToolDefinition(tool_name=BuiltinTool.wolfram_alpha))
             elif isinstance(t, PhotogenToolDefinition):

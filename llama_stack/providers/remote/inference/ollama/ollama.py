@@ -37,6 +37,7 @@ from llama_stack.providers.utils.inference.prompt_adapter import (
     convert_image_media_to_url,
     request_has_media,
 )
+import traceback
 
 
 model_aliases = [
